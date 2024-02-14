@@ -1,7 +1,7 @@
 import os
 import requests
 
-def get_player_data(player_id):
+def get_clan_data(clan_id):
     # Fetch the Authorization Token from the environment variable
     auth_token = os.getenv('AUTH_TOKEN')
 
@@ -10,7 +10,7 @@ def get_player_data(player_id):
         return {'status': 'Failure', 'data': 'Authorization Token not provided'}
 
     # URL for the Clash of Clans API
-    api_url = f'https://api.clashofclans.com/v1/players/%23{player_id}'
+    api_url = f'https://api.clashofclans.com/v1/clans/%23{clan_id}'
     #print(api_url)
     # Set the Authorization header with the token
     headers = {'Authorization': f'Bearer {auth_token}'}
@@ -31,6 +31,6 @@ def get_player_data(player_id):
         return {'status': 'Failure', 'data': f'Error during request: {str(e)}'}
 
 # Example usage
-#player_id = 'your_player_id_here'
-#result = get_player_data(player_id)
+clan_id = 'your_player_id_here'
+#result = get_player_data(clan_id)
 #print(result)
