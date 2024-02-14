@@ -1,0 +1,6 @@
+language: python
+name: CoC Stats Dashboard Flask
+packages:
+- path: helpers
+- path: controllers
+- path: models
