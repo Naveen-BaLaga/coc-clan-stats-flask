@@ -5,7 +5,6 @@ import sys
 MONGODB_CONNECTION_STRING = config('MONGODB_CONNECTION_STRING')
 DB_NAME = config('DB_NAME')
 TABLES_COLLECTION_NAME = config('TABLES_COLLECTION_NAME')
-
 try:
   client = pymongo.MongoClient(MONGODB_CONNECTION_STRING)
   
@@ -24,7 +23,7 @@ def get_tables_data(table_name):
         if entry:
             # Check if "Table Data" key exists in the entry
             if "Table Data" in entry:
-                return {"status": "Success", "payload": entry["Table Data"]}
+                return {"status": "Success", "payload": entry["Table Data"], "table_header": entry["Table Header"]}
             else:
                 return {"status": "Failure", "payload": "No 'Table Data' key in the entry."}
         else:
