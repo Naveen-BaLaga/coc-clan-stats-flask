@@ -1,9 +1,9 @@
-import os
+from decouple import config
 import requests
 
 def get_clan_data(clan_id):
     # Fetch the Authorization Token from the environment variable
-    auth_token = os.getenv('AUTH_TOKEN')
+    auth_token = config('AUTH_TOKEN')
 
     # Check if the AUTH_TOKEN is available
     if not auth_token:
@@ -24,7 +24,7 @@ def get_clan_data(clan_id):
             return {'status': 'Success', 'data': response.json()}
         else:
             # If not successful, return the error message
-            return {'status': 'Failure', 'data': f'Request failed with status code {response.status_code}'}
+            return {'status': 'Failure', 'data': f'Request failed with status code {response.status_code} and message: {str(response)}'}
 
     except Exception as e:
         # Handle any exceptions that may occur during the request

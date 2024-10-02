@@ -3,6 +3,7 @@ from flask_cors import CORS
 from controllers.player.player_controller import route_get_player
 from controllers.clans.clans_controller import route_get_clan
 from controllers.tables.tables_controller import route_get_tables
+from controllers.wars.wars_controller import *
 app = Flask(__name__)
 CORS(app)
 
@@ -23,6 +24,10 @@ app.add_url_rule('/get-clan', methods=['GET'], view_func=route_get_clan)
 
 # Route to return tables data
 app.add_url_rule('/get-tables', methods=['GET'], view_func=route_get_tables)
+
+# Route to return current war data
+app.add_url_rule('/get-current-war', methods=['GET'], view_func=route_get_current_war)
+
 if __name__ == '__main__':
     app.run()
     

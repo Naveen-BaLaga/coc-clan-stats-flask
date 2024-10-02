@@ -1,9 +1,9 @@
-import os
+from decouple import config
 import requests
 
 def get_player_data(player_id):
     # Fetch the Authorization Token from the environment variable
-    auth_token = os.getenv('AUTH_TOKEN')
+    auth_token = config('AUTH_TOKEN')
 
     # Check if the AUTH_TOKEN is available
     if not auth_token:
